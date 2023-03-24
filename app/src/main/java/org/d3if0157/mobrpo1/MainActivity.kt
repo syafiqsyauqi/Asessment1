@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.button.setOnClickListener { hitungKonversi() }
     }
+
     private fun hitungKonversi() {
         val berat = binding.beratEditText.text.toString()
         if (TextUtils.isEmpty(berat)) {
@@ -21,8 +22,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-
-        val konversi = berat.toInt()
+        val beratFloat = berat.toFloat()
 
         val selectedId = binding.radioGroup.checkedRadioButtonId
         if (selectedId == -1) {
@@ -33,20 +33,19 @@ class MainActivity : AppCompatActivity() {
         val isMiligram = selectedId == R.id.miligramRadioButton
         val isGram = selectedId == R.id.gramRadioButton
 
-// Mengubah satuan berat dari kg ke mg atau g
+        // Mengubah satuan berat dari kg ke mg atau g
         val beratKonversi = if (isMiligram) {
-            berat.toFloat() * 1000000 // Konversi ke miligram
+            beratFloat * 1000000 // Konversi ke miligram
         } else if (isGram) {
-            berat.toFloat() * 1000 // Konversi ke gram
+            beratFloat * 1000 // Konversi ke gram
         } else {
-            berat.toFloat() // Tetap menggunakan satuan kilogram
+            beratFloat // Tetap menggunakan satuan kilogram
         }
 
-        val konversiMgOrG = beratKonversi / (konversi * konversi)
+        val konversi = binding.beratEditText.text.toString().toFloat()
+        val konversiMgOrG = beratKonversi * konversi
 
         binding.hasilTextView.text = getString(R.string.hasil_konversi, konversiMgOrG)
-
-
     }
 
 }
