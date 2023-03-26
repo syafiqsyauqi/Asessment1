@@ -32,20 +32,24 @@ class MainActivity : AppCompatActivity() {
 
         val isMiligram = selectedId == R.id.miligramRadioButton
         val isGram = selectedId == R.id.gramRadioButton
+        val isPound = selectedId == R.id.lbsRadioButton
 
-        // Mengubah satuan berat dari kg ke mg atau g
+        // Mengubah satuan berat dari kg ke mg, g, atau lbs
         val beratKonversi = if (isMiligram) {
             beratFloat * 1000000 // Konversi ke miligram
         } else if (isGram) {
             beratFloat * 1000 // Konversi ke gram
+        } else if (isPound) {
+            beratFloat * 2.20462f // Konversi ke pound
         } else {
             beratFloat // Tetap menggunakan satuan kilogram
         }
 
         val konversi = binding.beratEditText.text.toString().toFloat()
-        val konversiMgOrG = beratKonversi * konversi
+        val konversiMgOrGOrLbs = beratKonversi * konversi
 
-        binding.hasilTextView.text = getString(R.string.hasil_konversi, konversiMgOrG)
+        binding.hasilTextView.text = getString(R.string.hasil_konversi, konversiMgOrGOrLbs)
     }
+
 
 }

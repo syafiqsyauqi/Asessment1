@@ -6,7 +6,7 @@
     <string name="jenis_kelamin">Jenis kelamin</string>
     <string name="miligram">Miligram</string>
     <string name="gram">Gram</string>
-    <string name="ton">Ton</string>
+    <string name="lbs">Pounds</string>
     <string name="hitung">Hitung</string>
     <string name="hasil_konversi">Hasil: %1$.2f</string>
     <string name="berat_invalid">Berat tidak boleh kosong.</string>
